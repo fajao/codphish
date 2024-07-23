@@ -1,0 +1,14 @@
+.git
+.gitignore
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.Python
+env
+venv
+*.log
+*.sqlite
+.DS_Store
+.env
+*.pkl

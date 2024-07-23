@@ -1,0 +1,12 @@
+flask
+pandas
+joblib
+python-whois
+tldextract
+pytz
+gunicorn
+psycopg2-binary
+SQLAlchemy
+google-cloud-storage
+flask-limiter
+validators
