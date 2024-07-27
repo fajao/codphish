@@ -6,14 +6,12 @@ import whois
 import tldextract
 from datetime import datetime
 import pytz
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_from_directory
 from urllib.parse import urlparse
 from google.cloud import storage
 from sqlalchemy import create_engine, Column, Integer, String, DateTime
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
-from flask_limiter import Limiter
-from flask_limiter.util import get_remote_address
 import logging
 from logging.handlers import SysLogHandler
 import validators
@@ -165,9 +163,10 @@ def get_db_connection():
     db_user = os.environ.get('DB_USER')
     db_pass = os.environ.get('DB_PASS')
     db_name = os.environ.get('DB_NAME')
-    db_host = os.environ.get('DB_HOST')
+    instance_connection_name = os.environ.get('INSTANCE_CONNECTION_NAME')
     
-    connection_string = f"postgresql://{db_user}:{db_pass}@{db_host}/{db_name}"
+    connection_string = f"postgresql://{db_user}:{db_pass}@/{db_name}?host=/cloudsql/{instance_connection_name}"
+    
     engine = create_engine(connection_string)
     Base.metadata.create_all(engine)
     return sessionmaker(bind=engine)
@@ -187,17 +186,20 @@ def load_model():
 #logger.addHandler(syslog_handler)
 
 # Flask Service
-app = Flask(__name__)
-limiter = Limiter(
-    app,
-    key_func=get_remote_address,
-    default_limits=["200 per day", "50 per hour"]
-)
+app = Flask(__name__, static_folder='static')
 loaded_model = load_model()
 SessionLocal = get_db_connection()
 
+@app.route('/')
+def index():
+    return send_from_directory(app.static_folder, 'index.html')
+
+@app.route('/<path:path>')
+def serve_static(path):
+    if path != 'favicon.ico':
+        return send_from_directory(app.static_folder, path)
+
 @app.route('/predict', methods=['POST'])
-@limiter.limit("10 per minute")
 def predict():
     url = request.json['url']
 
@@ -232,4 +234,4 @@ def last_checks():
     ])
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=int(os.environ.get('PORT', 8080)))
+    app.run(debug=False, host='0.0.0.0', port=int(os.environ.get('PORT', 8080)))

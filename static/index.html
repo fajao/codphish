@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Malice Checker</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>URL Malice Checker</h1>
+    
+    <form id="url-form">
+        <input type="url" id="url-input" placeholder="Enter URL to check" required>
+        <button type="submit" id="submit-btn">Check</button>
+    </form>
+
+    <div id="result"></div>
+
+    <div id="recent-checks">
+        <h2>Recent Checks</h2>
+        <div id="checks-list"></div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.3.8/purify.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

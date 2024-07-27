@@ -1,0 +1,55 @@
+body {
+    font-family: Arial, sans-serif;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f0f4f8;
+}
+h1 {
+    color: #2c3e50;
+    text-align: center;
+}
+#url-form {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+#url-input {
+    width: 70%;
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #3498db;
+    border-radius: 5px 0 0 5px;
+}
+#submit-btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+}
+#recent-checks {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+.check-item {
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #ecf0f1;
+    border-radius: 5px;
+}
+.Suspicious {
+    border-left: 5px solid #e74c3c;
+}
+.Safe {
+    border-left: 5px solid #2ecc71;
+}
+#result {
+    margin-top: 20px;
+    font-weight: bold;
+    text-align: center;
+}
