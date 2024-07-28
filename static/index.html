@@ -3,23 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>URL Malice Checker</title>
+    <title>Codphish - Malicious URL Detection</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png">
+    <link rel="manifest" href="images/favicon/site.webmanifest">
+    <link rel="mask-icon" href="images/favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
 </head>
 <body>
-    <h1>URL Malice Checker</h1>
-    
-    <form id="url-form">
-        <input type="url" id="url-input" placeholder="Enter URL to check" required>
-        <button type="submit" id="submit-btn">Check</button>
-    </form>
+    <header>
+        <div class="logo-block">
+            <img src="/images/logo.png" alt="Codphish Logo" class="logo">
+            <h1>Codphish - Malicious URL Detection</h1>
+            <div id="welcome">
+                <p>This project uses a machine learning model I built, trained on 16,800 URLs (half malicious, half benign), to predict if a website is malicious. It looks at 13 different features of the URL and its WHOIS info to make its decision.</p>
+        
+                <p>The model has an accuracy of 98.45% when tested on 3,360 URLs, and you can find more info about it <a href="https://mcfajao.com/posts/Phishing_URL_Detection_with_ML/" target="_blank">here</a>.</p>
+        
+                <p>Just enter any URL, and Codphish will quickly predict if it's safe or not to visit.</p>
+            </div>
+        </div>
+    </header>
 
-    <div id="result"></div>
+    <div class="content">
+        <form id="url-form">
+            <input type="url" id="url-input" placeholder="Enter URL to check" required>
+            <button type="submit" id="submit-btn">Check</button>
+        </form>
 
-    <div id="recent-checks">
-        <h2>Recent Checks</h2>
-        <div id="checks-list"></div>
+        <div id="loading" class="loading">Scanning<span class="ellipsis">...</span></div>
+
+        <div id="result"></div>
+
+        <div id="disclaimer" class="disclaimer warning">
+            <p><strong>Disclaimer!</strong></p> 
+            <p>All results are based on our custom ML model.</p>
+        </div>
+
+        <div id="recent-checks">
+            <h2>Recent Checks</h2>
+            <table id="checks-table">
+                <thead>
+                    <tr>
+                        <th>URL</th>
+                        <th>Result</th>
+                    </tr>
+                </thead>
+                <tbody id="checks-list"></tbody>
+            </table>
+        </div>
     </div>
+
+    <footer>
+        <p>&copy; 2024 Codphish - Malicious URL Detection. All rights reserved.</p>
+    </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.3.8/purify.min.js"></script>
     <script src="script.js"></script>

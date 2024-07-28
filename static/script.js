@@ -77,5 +77,26 @@ function isValidUrl(string) {
     }
 }
 
+document.getElementById('url-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+    const urlInput = document.getElementById('url-input').value;
+    const resultDiv = document.getElementById('result');
+    const loadingDiv = document.getElementById('loading');
+
+    resultDiv.innerHTML = '';
+    loadingDiv.style.display = 'block';
+
+    // Simulate an API call to check the URL
+    setTimeout(() => {
+        loadingDiv.style.display = 'none';
+        const isSafe = Math.random() >= 0.5; // Simulated result
+        if (isSafe) {
+            resultDiv.innerHTML = '<div class="tip">Results: The URL is Safe</div>';
+        } else {
+            resultDiv.innerHTML = '<div class="danger">Results: The URL is Suspicious</div>';
+        }
+    }, 2000); // Simulated API call delay
+});
+
 // Fetch recent checks when the page loads
 fetchRecentChecks();
