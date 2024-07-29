@@ -225,7 +225,7 @@ def predict():
 @app.route('/last_checks', methods=['GET'])
 def last_checks():
     session = SessionLocal()
-    checks = session.query(URLCheck).order_by(URLCheck.timestamp.desc()).limit(10).all()
+    checks = session.query(URLCheck).order_by(URLCheck.timestamp.desc()).limit(5).all()
     session.close()
     
     return jsonify([

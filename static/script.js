@@ -13,6 +13,10 @@ form.addEventListener('submit', async (e) => {
     }
 
     try {
+        const loadingDiv = document.getElementById('loading');
+        resultDiv.innerHTML = '';
+        loadingDiv.style.display = 'block';
+
         const response = await fetch('/predict', {
             method: 'POST',
             headers: {
@@ -26,8 +30,8 @@ form.addEventListener('submit', async (e) => {
         }
 
         const data = await response.json();
-        resultDiv.textContent = `Result: ${data.prediction}`;
-        resultDiv.className = data.prediction;
+        loadingDiv.style.display = 'none';
+        resultDiv.innerHTML = `<div class="${data.prediction.toLowerCase()}">Result: The URL is ${data.prediction}</div>`;
 
         // Refresh the recent checks after a new prediction
         fetchRecentChecks();
@@ -49,11 +53,11 @@ async function fetchRecentChecks() {
 
         checks.forEach(check => {
             const checkItem = document.createElement('div');
-            checkItem.className = `check-item ${check.prediction}`;
+            checkItem.className = 'check-item';
             checkItem.innerHTML = DOMPurify.sanitize(`
-                <p><strong>URL:</strong> ${check.url}</p>
-                <p><strong>Status:</strong> ${check.prediction}</p>
-                <p><strong>Date:</strong> ${new Date(check.timestamp).toLocaleString()}</p>
+                <div class="check-url">${check.url}</div>
+                <div class="check-result ${check.prediction.toLowerCase()}">${check.prediction}</div>
+                <div class="check-date">${new Date(check.timestamp).toLocaleString()}</div>
             `);
             checksList.appendChild(checkItem);
         });
@@ -76,27 +80,6 @@ function isValidUrl(string) {
         return false;
     }
 }
-
-document.getElementById('url-form').addEventListener('submit', function(event) {
-    event.preventDefault();
-    const urlInput = document.getElementById('url-input').value;
-    const resultDiv = document.getElementById('result');
-    const loadingDiv = document.getElementById('loading');
-
-    resultDiv.innerHTML = '';
-    loadingDiv.style.display = 'block';
-
-    // Simulate an API call to check the URL
-    setTimeout(() => {
-        loadingDiv.style.display = 'none';
-        const isSafe = Math.random() >= 0.5; // Simulated result
-        if (isSafe) {
-            resultDiv.innerHTML = '<div class="tip">Results: The URL is Safe</div>';
-        } else {
-            resultDiv.innerHTML = '<div class="danger">Results: The URL is Suspicious</div>';
-        }
-    }, 2000); // Simulated API call delay
-});
 
 // Fetch recent checks when the page loads
 fetchRecentChecks();

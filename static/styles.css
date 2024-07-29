@@ -135,31 +135,55 @@ body, html {
     padding: 10px;
     margin: 20px 0;
 }
+
 #recent-checks {
     background-color: white;
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    margin-top: 20px;
+    margin-top: 40px;
 }
-#checks-table {
-    width: 100%;
-    border-collapse: collapse;
+
+#recent-checks h2 {
+    margin-bottom: 20px;
 }
-#checks-table th, #checks-table td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
+
+#checks-list {
+    border-top: 1px solid #ccc;
 }
-#checks-table th {
-    background-color: #f2f2f2;
+
+.check-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid #ccc;
+    font-size: 16px;
 }
-.Suspicious {
+
+.check-url {
+    flex: 2;
+    word-break: break-all;
+}
+
+.check-result {
+    flex: 1;
+    text-align: center;
+}
+
+.check-date {
+    flex: 1;
+    text-align: right;
+}
+
+.Suspicious, .suspicious {
     color: #e74c3c;
 }
-.Safe {
+
+.Safe, .safe {
     color: #2ecc71;
 }
+
 footer {
     margin-top: 30px;
     text-align: center;
