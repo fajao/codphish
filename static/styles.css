@@ -1,37 +1,79 @@
-body {
-    font-family: 'Arial', sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap');
+
+body, html {
     margin: 0;
     padding: 0;
-    color: #000000; /* black */
+    background-color: white;
+    font-family: 'Oswald', sans-serif;
 }
-header {
-    background-color: #A8F6D3; /* mint green */
-    padding: 20px 0;
-    text-align: center;
-}
-.logo-block {
+
+.header {
+    background-color: #A8F6D3;
+    padding: 15px;
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
 }
-header .logo {
-    width: 200px;
-    margin-bottom: 10px;
+
+.header .logo {
+    width: 250px;
 }
-h1 {
-    color: #2c3e50;
-    font-size: 2em;
-    text-align: center;
-    margin: 0;
-    padding: 10px;
-    line-height: 1.5;
+
+.header-nav {
+    margin-right: auto; /* This pushes the nav to the left */
+    padding-left: 1350px; /* Adds some space between the logo and nav */
 }
+
+.header-nav a {
+    color: #000;
+    text-decoration: none;
+    margin-left: 20px;
+    font-size: 30px;
+}
+
 .content {
-    background-color: #ffffff; /* white */
-    padding: 20px;
     max-width: 800px;
-    margin: 0 auto;
+    margin: 40px auto;
+    padding: 0 20px;
 }
+
+.intro {
+    margin-bottom: 40px;
+}
+
+.intro h1 {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.intro p {
+    font-size: 20px;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.disclaimer {
+    display: flex;
+    align-items: flex-start;
+    margin: 40px 0;
+    padding: 15px;
+    background-color: #fff3cd;
+    border: 1px solid #ffeeba;
+}
+
+.disclaimer .icon {
+    margin-right: 15px;
+    margin-top: 2px;
+    flex-shrink: 0;
+}
+
+.disclaimer p {
+    font-size: 16px;
+    line-height: 1.6;
+    flex: 1;
+    margin: 0;
+}
+
 #url-form {
     display: flex;
     justify-content: center;
@@ -41,13 +83,13 @@ h1 {
     width: 70%;
     padding: 10px;
     font-size: 16px;
-    border: 2px solid #3498db;
+    border: 2px solid #C0C0C0;
     border-radius: 5px 0 0 5px;
 }
 #submit-btn {
     padding: 10px 20px;
     font-size: 16px;
-    background-color: #3498db;
+    background-color: #C0C0C0;
     color: white;
     border: none;
     border-radius: 0 5px 5px 0;
@@ -57,7 +99,7 @@ h1 {
     display: none;
     text-align: center;
     font-size: 1.2em;
-    color: #3498db;
+    color: #C0C0C0;
     margin-bottom: 20px;
 }
 .ellipsis::after {

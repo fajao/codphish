@@ -13,22 +13,22 @@
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
 </head>
+
 <body>
-    <header>
-        <div class="logo-block">
-            <img src="/images/logo.png" alt="Codphish Logo" class="logo">
-            <h1>Codphish - Malicious URL Detection</h1>
-            <div id="welcome">
-                <p>This project uses a machine learning model I built, trained on 16,800 URLs (half malicious, half benign), to predict if a website is malicious. It looks at 13 different features of the URL and its WHOIS info to make its decision.</p>
-        
-                <p>The model has an accuracy of 98.45% when tested on 3,360 URLs, and you can find more info about it <a href="https://mcfajao.com/posts/Phishing_URL_Detection_with_ML/" target="_blank">here</a>.</p>
-        
-                <p>Just enter any URL, and Codphish will quickly predict if it's safe or not to visit.</p>
-            </div>
-        </div>
+    <header class="header">
+        <img src="/images/logo4.png" alt="Codphish Logo" class="logo">
+        <nav class="header-nav">
+            <a href="https://mcfajao.com/" target="_blank" id="blog-link">Blog</a>
+            <a href="https://mcfajao.com/posts/Phishing_URL_Detection_with_ML/" target="_blank" id="model-link">Model</a>
+        </nav>
     </header>
 
     <div class="content">
+        <div class="intro">
+            <h1>Codphish - Malicious URL Detection</h1>
+            <p>This project uses a machine learning model I built, trained on 16,800 URLs (half malicious, half benign), to predict if a website is malicious or not.</p>
+            <p>It looks at 13 different features of the URL and its WHOIS information to make its decision. The model has an accuracy of 98.45% when tested on 3,360 URLs, and you can find more about it <a href="https://mcfajao.com/posts/Phishing_URL_Detection_with_ML/" target="_blank">here</a>.</p>
+        </div>
         <form id="url-form">
             <input type="url" id="url-input" placeholder="Enter URL to check" required>
             <button type="submit" id="submit-btn">Check</button>
@@ -38,9 +38,11 @@
 
         <div id="result"></div>
 
-        <div id="disclaimer" class="disclaimer warning">
-            <p><strong>Disclaimer!</strong></p> 
-            <p>All results are based on our custom ML model.</p>
+        <div class="disclaimer">
+            <svg class="icon" width="24" height="24" viewBox="0 0 24 24">
+                <path fill="#ffc107" d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/>
+            </svg>
+            <p>Please note that all results are based on our custom ML model and while it's highly accurate against the trained data, no model can guarantee 100% accuracy. <b>Always consider other factors before making a final decision about a website's safety.</b></p>
         </div>
 
         <div id="recent-checks">
