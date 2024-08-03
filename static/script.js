@@ -83,3 +83,24 @@ function isValidUrl(string) {
 
 // Fetch recent checks when the page loads
 fetchRecentChecks();
+
+function adjustLayout() {
+    const isMobile = window.innerWidth <= 768;
+    const checkItems = document.querySelectorAll('.check-item');
+    
+    checkItems.forEach(item => {
+        const url = item.querySelector('.check-url');
+        const result = item.querySelector('.check-result');
+        const date = item.querySelector('.check-date');
+        
+        if (isMobile) {
+            url.textContent = url.textContent.slice(0, 30) + '...';
+            result.textContent = result.textContent.replace('Result: ', '');
+            date.textContent = new Date(date.textContent).toLocaleDateString();
+        }
+    });
+}
+
+// Call this function when the page loads and when the window is resized
+window.addEventListener('load', adjustLayout);
+window.addEventListener('resize', adjustLayout);

@@ -11,24 +11,26 @@ body, html {
     background-color: #A8F6D3;
     padding: 15px;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
 }
 
 .header .logo {
-    width: 250px;
+    width: 200px;
+    max-width: 100%;
+    height: auto;
 }
 
 .header-nav {
-    margin-right: auto; /* This pushes the nav to the left */
-    padding-left: 1350px; /* Adds some space between the logo and nav */
+    display: flex;
+    gap: 20px;
 }
 
 .header-nav a {
     color: #000;
     text-decoration: none;
-    margin-left: 20px;
-    font-size: 30px;
+    font-size: 20px;
 }
 
 .content {
@@ -47,7 +49,7 @@ body, html {
 }
 
 .intro p {
-    font-size: 20px;
+    font-size: 18px;
     line-height: 1.6;
     margin-bottom: 15px;
 }
@@ -200,4 +202,75 @@ a {
 }
 a:hover {
     text-decoration: underline;
+}
+
+@media screen and (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .header .logo {
+        margin-bottom: 10px;
+    }
+
+    .header-nav {
+        margin-top: 10px;
+    }
+
+    .intro h1 {
+        font-size: 24px;
+    }
+
+    .intro p {
+        font-size: 16px;
+    }
+
+    #url-form {
+        flex-direction: column;
+    }
+
+    #url-input {
+        width: 100%;
+        border-radius: 5px;
+        margin-bottom: 10px;
+    }
+
+    #submit-btn {
+        width: 100%;
+        border-radius: 5px;
+    }
+
+    .check-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .check-url, .check-result, .check-date {
+        width: 100%;
+        text-align: left;
+        margin-bottom: 5px;
+    }
+}
+
+@media screen and (min-width: 769px) {
+    .header {
+        padding: 15px 5%;
+    }
+
+    .header .logo {
+        width: 250px;
+    }
+
+    .header-nav {
+        margin-left: auto;
+    }
+
+    .header-nav a {
+        font-size: 24px;
+    }
+
+    .content {
+        padding: 0 5%;
+    }
 }
